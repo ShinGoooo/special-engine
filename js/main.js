@@ -23,16 +23,16 @@
         var doneParent = this.parentNode;
         doneParent.className = 'toggleTarget workDone';/*完了class*/
       }else{
-       this.textContent = "作業中";
-       // ボタン押下で生成されたdomの中の親要素へclassNameをつける処理
-       var workParent = this.parentNode;
-       workParent.className = 'toggleTarget work';/*作業中class*/
+        this.textContent = "作業中";
+        // ボタン押下で生成されたdomの中の親要素へclassNameをつける処理
+        var workParent = this.parentNode;
+        workParent.className = 'toggleTarget work';/*作業中class*/
       }
     })
     return WorkBtn;
   }
 
-     // 削除ボタン作成処理
+  // 削除ボタン作成処理
   var createDelBtn = function(){
     var delBtn = document.createElement('button');
     var delText = document.createTextNode('削除');
@@ -48,13 +48,13 @@
         alert('削除しました。');
         return;
       }else{
-      return;
+        return;
       }
     })
     return delBtn;
   }
 
-       /*追加ボタン押下時処理 タスクを追加する*/
+  /*追加ボタン押下時処理 タスクを追加する*/
   btn.addEventListener('click',function(){
 
     var task = document.getElementById('new-task').value;
@@ -78,15 +78,15 @@
 
 
 
-// ラジオボタン切り替え処理
+  // ラジオボタン切り替え処理
   // var form = document.forms[0];
   // form.addEventListener('change',function(event){
 
-    // var value = form.elements['radio'].value;
-    // var toggleTargets = document.getElementsByClassName('toggleTarget');
-    // Array.from(toggleTargets).forEach(function(toggleTargets){
-    //   toggleTarget.style.display = toggleTarget.classLsit.contains(value)?'':'none'
-    // },false);
+  // var value = form.elements['radio'].value;
+  // var toggleTargets = document.getElementsByClassName('toggleTarget');
+  // Array.from(toggleTargets).forEach(function(toggleTargets){
+  //   toggleTarget.style.display = toggleTarget.classLsit.contains(value)?'':'none'
+  // },false);
 
 
   // })
@@ -94,45 +94,45 @@
 
   /*ラジオボタン完了が選択された時*/
 
-    radioWork.addEventListener('click',function(){
-      var workTsks = document.getElementsByClassName('toggleTarget work');
-      workTsks = Array.from(workTsks);
-      workTsks.forEach(function(workTsks){
-        workTsks.style.display = "block";
-      })
-      var doneTsks = document.getElementsByClassName('toggleTarget workDone');
-      doneTsks = Array.from(doneTsks);
-      doneTsks.forEach(function(doneTsks){
-        doneTsks.style.display = "none";
-      })
+  radioWork.addEventListener('click',function(){
+    var workTsks = document.getElementsByClassName('toggleTarget work');
+    workTsks = Array.from(workTsks);
+    workTsks.forEach(function(workTsks){
+      workTsks.style.display = "block";
     })
+    var doneTsks = document.getElementsByClassName('toggleTarget workDone');
+    doneTsks = Array.from(doneTsks);
+    doneTsks.forEach(function(doneTsks){
+      doneTsks.style.display = "none";
+    })
+  })
 
   // // ラジオボタン作業中が選択された時
 
 
-    radioDone.addEventListener('click',function(){
-      var doneTsks = document.getElementsByClassName('toggleTarget workDone');
-      doneTsks = Array.from(doneTsks);
-      doneTsks.forEach(function(doneTsks){
-        doneTsks.style.display = "block";
-      })
-      var workTsks = document.getElementsByClassName('toggleTarget work');
-      workTsks = Array.from(workTsks);
-      workTsks.forEach(function(workTsks){
-        workTsks.style.display = "none";
-      })
-
+  radioDone.addEventListener('click',function(){
+    var doneTsks = document.getElementsByClassName('toggleTarget workDone');
+    doneTsks = Array.from(doneTsks);
+    doneTsks.forEach(function(doneTsks){
+      doneTsks.style.display = "block";
+    })
+    var workTsks = document.getElementsByClassName('toggleTarget work');
+    workTsks = Array.from(workTsks);
+    workTsks.forEach(function(workTsks){
+      workTsks.style.display = "none";
     })
 
+  })
 
-    // ラジオボタンすべてが選択された時
 
-    radioAll.addEventListener('click',function(){
-      var AllTsks = document.getElementsByClassName('toggleTarget');
-      AllTsks = Array.from(AllTsks);
-      AllTsks.forEach(function(AllTsks){
-        AllTsks.style.display = "block";
-      })
+  // ラジオボタンすべてが選択された時
+
+  radioAll.addEventListener('click',function(){
+    var AllTsks = document.getElementsByClassName('toggleTarget');
+    AllTsks = Array.from(AllTsks);
+    AllTsks.forEach(function(AllTsks){
+      AllTsks.style.display = "block";
+    })
   })
 
 })();

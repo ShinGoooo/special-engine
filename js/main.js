@@ -7,9 +7,6 @@
   var radioDone = document.getElementById('radio-done'); /*ラジオボタン完了のid*/
   var radioAll = document.getElementById('radio-all');
 
-
-
-
   /*作業中ボタン作成処理*/
   var createWorkBtn = function(){
     var WorkBtn = document.createElement('button');
@@ -38,62 +35,42 @@
     var delText = document.createTextNode('削除');
     delBtn.appendChild(delText);
     delBtn.id = 'delId';
-
     // 削除ボタン押下処理
     delBtn.addEventListener('click',function(){
       var li = this.parentNode;
       var result = confirm('タスクを削除しますか？');
       if(result){
         li.remove();
-        alert('削除しました。');
-        return;
-      }else{
-        return;
+        alert('削除しました。')
       }
     })
     return delBtn;
   }
 
+
+
   /*追加ボタン押下時処理 タスクを追加する*/
-  btn.addEventListener('click',function(){
+ btn.addEventListener('click',function(){
 
-    var task = document.getElementById('new-task').value;
-    if(task==""){
-      alert("タスクを入力して下さい");
-      return;
-    }
-    tasks.push(task); /*new-taskの値を配列tasksへpush */
-
-    //liタグ作成処理
-    var li = document.createElement('li');
-    li.className = 'toggleTarget work';
-    taskList.appendChild(li); /*taskList(olタグ)の子要素へ変数liを入れる*/
-
-    for(var i = 0; i < tasks.length; i++ ){ /*i==配列のインデックス*/
-      li.textContent = tasks[i] /*liタグの要素へ配列tasks[i]を代入*/
-    }
-    li.appendChild(createWorkBtn()); /*returnで帰ってきたworkBtn*/
-    li.appendChild(createDelBtn());/*returnで帰ってきたDelBtn*/
-  })
-
-
-
-  // ラジオボタン切り替え処理
-  // var form = document.forms[0];
-  // form.addEventListener('change',function(event){
-
-  // var value = form.elements['radio'].value;
-  // var toggleTargets = document.getElementsByClassName('toggleTarget');
-  // Array.from(toggleTargets).forEach(function(toggleTargets){
-  //   toggleTarget.style.display = toggleTarget.classLsit.contains(value)?'':'none'
-  // },false);
-
-
-  // })
+   var task = document.getElementById('new-task').value;
+   if(task==""){
+     alert("タスクを入力して下さい");
+     return;
+   }
+   tasks.push(task); /*new-taskの値を配列tasksへpush */
+   //liタグ作成処理
+   var li = document.createElement('li');
+   li.className = 'toggleTarget work';
+   taskList.appendChild(li); /*taskList(olタグ)の子要素へ変数liを入れる*/
+   tasks.forEach(function(){
+     li.textContent = task;
+   })
+   li.appendChild(createWorkBtn()); /*returnで帰ってきたworkBtn*/
+   li.appendChild(createDelBtn());/*returnで帰ってきたDelBtn*/
+ })
 
 
   /*ラジオボタン完了が選択された時*/
-
   radioWork.addEventListener('click',function(){
     var workTsks = document.getElementsByClassName('toggleTarget work');
     workTsks = Array.from(workTsks);
@@ -108,8 +85,6 @@
   })
 
   // // ラジオボタン作業中が選択された時
-
-
   radioDone.addEventListener('click',function(){
     var doneTsks = document.getElementsByClassName('toggleTarget workDone');
     doneTsks = Array.from(doneTsks);
@@ -121,12 +96,9 @@
     workTsks.forEach(function(workTsks){
       workTsks.style.display = "none";
     })
-
   })
 
-
   // ラジオボタンすべてが選択された時
-
   radioAll.addEventListener('click',function(){
     var AllTsks = document.getElementsByClassName('toggleTarget');
     AllTsks = Array.from(AllTsks);
@@ -134,5 +106,4 @@
       AllTsks.style.display = "block";
     })
   })
-
 })();
